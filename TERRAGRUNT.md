@@ -109,7 +109,23 @@ the Spoke VPCs.
 
 ### tgw-workload
 
-This directory will make use of the terraform AWS provider to create additional example EC2 resources.  Similar to before you will run several `terragrunt` commands, but note that you will not be able to run `apply` until AFTER your XC TGW Site has gone into an "ONLINE" state (~10 minutes after your `apply` from the `tgw-site` directory completes).
+This directory will make use of the terraform AWS provider to create additional example EC2 resources.  Similar to before you will run several `terragrunt` commands, but note that you will not be able to run `apply` until AFTER your XC TGW Site has gone into an "ONLINE" state (~10 minutes after your `apply` from the `tgw-site` directory completes). A `pre-check` handler in [`terragrunt.hcl`](./tgw-workload/terragrunt.hcl) checks for the status of the TGW site to prevent an `apply` before the "ONLINE" state.
+
+```hcl
+terraform {
+
+    before_hook "pre-check" {
+        commands = ["apply","plan"]
+        execute  = ["./pre-check.sh"]
+    }
+
+}
+```
+```bash
+INFO[0005] Executing hook: pre-check                    
+ONLINE: AWS TGW site is online.  Safe to proceed. waited 1 minutes
+aws_instance.f5-workload-1: Refreshing state... [id=i-0a0b3b4b854908705]
+```
 
 From the top-level directory
 ```
