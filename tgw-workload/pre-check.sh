@@ -3,7 +3,7 @@
 # Check that site is online before creating workload resources
 #
 
-for x in `seq 1 3`; do
+for x in `seq 1 120`; do
     site_state=$(curl --location --request GET $VOLT_API_URL/config/namespaces/system/aws_tgw_sites/$TF_VAR_projectPrefix-tgw-1  -H "Authorization: APIToken $VOLTERRA_TOKEN" -H "content-type: application/json" -s  |jq -r .spec.site_state)
 if [ "$site_state" = "ONLINE" ]; then
    echo "ONLINE: AWS TGW site is online.  Safe to proceed. waited $x minutes"
