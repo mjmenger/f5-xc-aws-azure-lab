@@ -7,7 +7,7 @@ terraform {
             VOLT_API_URL      = "https://tenant.console.ves.volterra.io/api"
             VOLT_API_TIMEOUT  = "60s"
             VOLT_API_P12_FILE = "/path/to/my.p12"
-	    VOLTERRA_TOKEN    = "Volterra API Token"
+	        VOLTERRA_TOKEN    = "Volterra API Token"
         }
     }
 
