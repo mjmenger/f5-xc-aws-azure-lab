@@ -13,7 +13,7 @@ terraform {
 
 
 dependencies {
-  paths = ["../alt-aws-base2","../alt-tgw-site2"]
+  paths = ["../alt-aws-base2","../alt-tgw-site2", "../alt-site-mesh-group"]
 }
 
 dependency "infrastructure" {
