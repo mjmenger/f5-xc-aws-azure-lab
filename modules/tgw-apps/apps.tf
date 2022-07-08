@@ -30,8 +30,8 @@ resource "volterra_origin_pool" "workload1" {
         }
       }
     }
-}
-origin_servers {
+  }
+  origin_servers {
     private_ip {
       ip = var.workload_ip2
       site_locator {
