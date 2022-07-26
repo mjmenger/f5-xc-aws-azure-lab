@@ -525,6 +525,8 @@ you should be able to clean up the cloud resources with ```terragrunt run-all de
 If you've deleted everything with terragrunt or terraform and you want to save disk space on terraform providers and modules, you can try the following. YOU MAY LOSE STUFF THAT'S PRECIOUS TO YOU. IF YOU'RE NOT CERTAIN THEN DON'T DO THIS.
 ```shell
 # remove the providers and modules you've downloaded
+find . -type d -name ".terragrunt-cache" -exec rm -rf "{}" \;
+# remove the providers and modules you've downloaded
 find . -type d -name ".terraform" -exec rm -rf "{}" \;
 # remove the configuration lock file unless you don't want to 
 find . -type f -name ".terraform.lock.hcl" -delete
